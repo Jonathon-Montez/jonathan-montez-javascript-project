@@ -1,0 +1,44 @@
+html {
+  box-sizing: border-box;
+  background: url("https://images.actionnetwork.com/1200x675/blog/2020/04/michaeljordan-1.webp")
+    fixed;
+  background-size: cover;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  pointer-events: auto;
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  left: 10%;
+  top: 50%;
+  width: 80%;
+  height: 295px;
+  overflow: hidden;
+}
+
+.slider-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 90%;
+  width: 200%;
+  display: grid;
+  grid-template-columns: repeat(14, 1fr);
+  gap: 0px;
+  pointer-events: none;
+}
+
+.slide-img {
+  height: 90%;
+  text-align: center;
+  padding: 4rem;
+  background: black;
+}

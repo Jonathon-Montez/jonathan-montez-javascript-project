@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="click-drag2.css">
+</head>
+<body>
+    <div class="slider">
+        <div class="slider-inner">
+            <div class="slide-img">
+              <img src="img/1.jpg" alt="Jordan 1"/>
+            </div>
+            <div class="slide-img">
+              <img src="img/2.jpg" alt="Jordan 2"/>
+            </div>
+              <div class="slide-img">
+              <img src="img/3.jpg" alt="Jordan 3"/>
+            </div>
+            <div class="slide-img">
+              <img src="img/4.jpg" alt="Jordan 4"/> 
+            </div>
+            <div class="slide-img">
+              <img src="img/5.jpg" alt="Jordan 5"/> 
+            </div>
+            <div class="slide-img">
+              <img src="img/6.jpg" alt="Jordan 6"/>
+            </div>
+            <div class="slide-img">
+              <img src="img/7.jpg" alt="Jordan 7"/> 
+            </div>
+            <div class="slide-img">
+              <img src="img/8.jpg" alt="Jordan 8"/>
+            </div>
+            <div class="slide-img">
+              <img src="img/9.jpg" alt="Jordan 9"/>
+            </div>
+            <div class="slide-img">
+              <img src="img/10.jpg" alt="Jordan 10"/>
+            </div>
+            <div class="slide-img">
+              <img src="img/11.jpg" alt="Jordan 11"/>
+            </div>
+            <div class="slide-img">
+              <img src="img/12.jpg" alt="Jordan 12"/>
+            </div>
+            <div class="slide-img">
+              <img src="img/13.jpg" alt="Jordan 13"/>
+            </div>
+            <div class="slide-img">
+              <img src="img/14.jpg" alt="Jordan 14"/>
+            </div>  
+
+
+        </div>
+
+    </div>  
+    <script>
+      let slider = document.querySelector('.slider');
+      let innerSlider = document.querySelector('.slider-inner');
+
+      let pressed = false;
+      let startx;
+      let x;
+
+      slider.addEventListener('mousedown', (e)=>{
+        pressed = true;
+        startx = e.offsetX - innerSlider.offsetLeft;
+        slider.style.cursor = 'grabbing'
+      });
+
+      slider.addEventListener('mouseenter', ()=>{
+        slider.style.cursor = 'grab'
+      });
+
+      slider.addEventListener('mouseup', ()=>{
+        slider.style.cursor = 'grab'
+      }); 
+      
+      window.addEventListener('mouseup', ()=>{
+        pressed = false;
+      });
+
+      slider.addEventListener('mousemove', (e)=>{
+        if(!pressed) return;
+        e.preventDefault();
+
+        x = e.offsetX
+
+        innerSlider.style.left = `${x - startx}px`;
+
+        checkboundary()
+      })
+
+      function checkboundary(){
+        let outer = slider.getBoundingClientRect();
+        let inner = innerSlider.getBoundingClientRect();
+
+        if(parseInt(innerSlider.style.left) > 0){
+          innerSlider.style.left = '0px';
+        }else if(inner.right < outer.right){
+          //innerSlider.style.left = `-${inner.width - outer.width}px`
+        }
+      }
+    </script>  
+</body>
+</html>
